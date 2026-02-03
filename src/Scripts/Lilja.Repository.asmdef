@@ -1,7 +1,9 @@
 {
     "name": "Lilja.Repository",
     "rootNamespace": "Lilja.Repository",
-    "references": [],
+    "references": [
+        "GUID:f14b7bf6f5ff88c4cb2ffab7ac009214"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
