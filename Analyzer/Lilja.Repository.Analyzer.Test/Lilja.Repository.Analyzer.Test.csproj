@@ -1,17 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lilja.Repository.Analyzer\Lilja.Repository.Analyzer.csproj">
-      <OutputItemType>Analyzer</OutputItemType>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lilja.Repository.Analyzer\Lilja.Repository.Analyzer.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\Scripts\Runtime\Core\Attributes\*.cs"
+             Link="Runtime\Attributes\%(Filename)%(Extension)" />
+    <Compile Include="..\..\src\Scripts\Runtime\Core\Diagnostics\*.cs"
+             Link="Runtime\Diagnostics\%(Filename)%(Extension)" />
+    <Compile Include="..\..\src\Scripts\Runtime\Core\IO\*.cs"
+             Link="Runtime\IO\%(Filename)%(Extension)" />
+    <Compile Include="..\..\src\Scripts\Runtime\Core\Repositories\*.cs"
+             Link="Runtime\Repositories\%(Filename)%(Extension)" />
+    <Compile Include="..\..\src\Scripts\Runtime\Core\Transactions\*.cs"
+             Link="Runtime\Transactions\%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>
