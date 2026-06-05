@@ -3,21 +3,12 @@ using System.Text;
 
 namespace Lilja.Repository
 {
-    /// <summary>
-    /// 書き込み成功後に一時ファイルで置き換えることで、ファイルを書き込みます。
-    /// </summary>
     public static class AtomicFileWriter
     {
-        /// <summary>
-        /// アトミックな置換操作を使って UTF-8 テキストをファイルへ書き込みます。
-        /// </summary>
-        /// <param name="filePath">出力先パス。</param>
-        /// <param name="content">書き込むテキスト。</param>
         public static void WriteAllText(string filePath, string content)
         {
-            var tempPath = GetTempPath(filePath);
+            var tempPath = filePath + ".tmp";
             EnsureDirectory(filePath);
-
             try
             {
                 File.WriteAllText(tempPath, content, new UTF8Encoding(false));
@@ -29,16 +20,10 @@ namespace Lilja.Repository
             }
         }
 
-        /// <summary>
-        /// アトミックな置換操作を使ってバイナリ内容をファイルへ書き込みます。
-        /// </summary>
-        /// <param name="filePath">出力先パス。</param>
-        /// <param name="bytes">書き込むバイト列。</param>
         public static void WriteAllBytes(string filePath, byte[] bytes)
         {
-            var tempPath = GetTempPath(filePath);
+            var tempPath = filePath + ".tmp";
             EnsureDirectory(filePath);
-
             try
             {
                 File.WriteAllBytes(tempPath, bytes);
@@ -50,16 +35,15 @@ namespace Lilja.Repository
             }
         }
 
-        /// <summary>
-        /// ファイルが存在する場合に削除します。
-        /// </summary>
-        /// <param name="filePath">削除するファイル。</param>
-        public static void DeleteIfExists(string filePath)
+        public static bool DeleteIfExists(string filePath)
         {
-            if (File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
-                File.Delete(filePath);
+                return false;
             }
+
+            File.Delete(filePath);
+            return true;
         }
 
         private static void ReplaceFile(string tempPath, string filePath)
@@ -70,7 +54,7 @@ namespace Lilja.Repository
                 return;
             }
 
-            var backupPath = GetBackupPath(filePath);
+            var backupPath = filePath + ".bak";
             DeleteIfExists(backupPath);
             File.Replace(tempPath, filePath, backupPath, true);
             DeleteIfExists(backupPath);
@@ -83,16 +67,6 @@ namespace Lilja.Repository
             {
                 Directory.CreateDirectory(directory);
             }
-        }
-
-        private static string GetTempPath(string filePath)
-        {
-            return filePath + ".tmp";
-        }
-
-        private static string GetBackupPath(string filePath)
-        {
-            return filePath + ".bak";
         }
     }
 }

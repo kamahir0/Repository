@@ -5,7 +5,6 @@
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);RS2008</NoWarn>
-
     <IsRoslynComponent>true</IsRoslynComponent>
     <AnalyzerLanguage>cs</AnalyzerLanguage>
     <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -21,19 +20,12 @@
 
   <Target Name="CopyDLLToPackage" AfterTargets="Build">
     <PropertyGroup>
-      <UnityPluginsPath>$(ProjectDir)..\..\src\Plugins</UnityPluginsPath>
+      <UnityPluginsPath>$(ProjectDir)..\..\Plugins</UnityPluginsPath>
     </PropertyGroup>
 
     <Message Text="Copying DLL to Unity Plugins folder...: $(UnityPluginsPath)" Importance="high" />
-
     <MakeDir Directories="$(UnityPluginsPath)" />
-
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
-          DestinationFolder="$(UnityPluginsPath)" />
-
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).pdb"
-          DestinationFolder="$(UnityPluginsPath)"
-          Condition="Exists('$(OutputPath)$(AssemblyName).pdb')" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(UnityPluginsPath)" />
   </Target>
 
 </Project>
