@@ -17,9 +17,7 @@
   "documentationUrl": "https://github.com/kamahir0/Lilja/blob/main/lilja-packages/lilja.repository/README.md",
   "changelogUrl": "https://github.com/kamahir0/Lilja/blob/main/lilja-packages/lilja.repository/CHANGELOG.md",
   "licensesUrl": "https://github.com/kamahir0/Lilja/blob/main/LICENSE",
-  "dependencies": {
-    "com.cysharp.unitask": "2.5.10"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/kamahir0/Repository.git",
