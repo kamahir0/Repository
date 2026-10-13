@@ -1,9 +1,9 @@
 {
-  "name": "com.kamahir0.lilja.repository",
-  "displayName": "Lilja.Repository",
+  "name": "com.kamahir0.repository",
+  "displayName": "Lilja Repository",
   "version": "0.2.0",
-  "unity": "6000.3",
-  "description": "Unity repository source generator with DTO snapshots, opt-in repositories, JSON persistence, and optional MessagePack support.",
+  "unity": "6000.0",
+  "description": "Type-safe persistence repository pattern for Unity with Roslyn Source Generator.",
   "keywords": [
     "lilja",
     "unity",
@@ -12,13 +12,17 @@
   ],
   "author": {
     "name": "kamahir0",
-    "url": "https://github.com/kamahir0",
-    "email": "hrtk1330@gmail.com"
+    "url": "https://github.com/kamahir0"
   },
   "documentationUrl": "https://github.com/kamahir0/Lilja/blob/main/lilja-packages/lilja.repository/README.md",
   "changelogUrl": "https://github.com/kamahir0/Lilja/blob/main/lilja-packages/lilja.repository/CHANGELOG.md",
   "licensesUrl": "https://github.com/kamahir0/Lilja/blob/main/LICENSE",
   "dependencies": {
     "com.cysharp.unitask": "2.5.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamahir0/Repository.git",
+    "directory": "Packages/com.kamahir0.repository"
   }
 }
