@@ -14,7 +14,7 @@ Type-safe persistence repository pattern for Unity with Roslyn Source Generator.
 Unity Editorの **Package Manager > [+] > Add package from git URL...** に以下を入力します：
 
 ```text
-https://github.com/kamahir0/Repository.git?path=/Packages/com.kamahir0.repository
+https://github.com/kamahir0-lilja/Repository.git?path=/Packages/com.kamahir0.repository
 ```
 
 特定のバージョンを指定する場合は、末尾にタグを付加してください（例: `#vcom.kamahir0.repository`）。
@@ -26,7 +26,7 @@ https://github.com/kamahir0/Repository.git?path=/Packages/com.kamahir0.repositor
 ```json
 {
   "dependencies": {
-    "com.kamahir0.repository": "https://github.com/kamahir0/Repository.git?path=/Packages/com.kamahir0.repository"
+    "com.kamahir0.repository": "https://github.com/kamahir0-lilja/Repository.git?path=/Packages/com.kamahir0.repository"
   }
 }
 ```
